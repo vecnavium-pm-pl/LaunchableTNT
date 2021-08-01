@@ -27,7 +27,7 @@ You found a bug or a plugin issue?
 
 If you are using a modified Pocketmine-MP build/version you will not get assisted.
 
-No Pocketmine-MP Spoons support! If you are using a modified Pocketmine-MP build/version you will not get assisted.
+No Pocketmine-MP Spoons support! If you are using a modified Pocketmine-MP build/version you will not get assisted. (This includes PocketMine-MP source and the plugin itself)
 
 # Suggestions
 
