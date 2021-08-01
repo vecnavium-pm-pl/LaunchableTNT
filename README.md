@@ -1,3 +1,6 @@
+ThrowableTNT
+A PocketMine-MP Plugin that enables throwing TNT
+
 # Planned features
 
 - [ ] Cooldown (Setting true or false and time limit)
