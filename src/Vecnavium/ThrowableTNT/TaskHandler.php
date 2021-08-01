@@ -2,7 +2,7 @@
 
 namespace Vecnavium\ThrowableTNT;
 
-use Vecnavium\ThrowableTNT\Main;
+use Vecnavium\ThrowableTNT\ThrowableTNT;
 use pocketmine\block\Solid;
 use pocketmine\entity\Entity;
 use pocketmine\item\Item;
