@@ -24,7 +24,7 @@ class TaskHandler implements Listener
         $player = $event->getPlayer();
         if ($player->getInventory()->getItemInHand()->getId() === Item::TNT) {
             $entity = Entity::createEntity("PrimedTNT", $player->getLevel(), Entity::createBaseNBT($player));
-            $entity->setMotion($player->getDirectionVector()->normalize()->multiply(3));
+            $entity->setMotion($player->getDirectionVector()->normalize()->multiply(2));
             $entity->spawnToAll();
         }
     }
