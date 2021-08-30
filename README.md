@@ -9,6 +9,7 @@ A PocketMine-MP Plugin that enables throwing TNT
 
 - [ ] Ability to disable or enable explosions (config)
 
+- [ ] Animated blocks(Falling blocks onExplode and configurable)
 
 
 Have other suggestions? Let me know in the [Support Discord](https://discord.gg/jWFB56RqUN) or Create an [Issue](https://github.com/Vecnavium/ThrowableTNT/issues/new) about your suggestion!
