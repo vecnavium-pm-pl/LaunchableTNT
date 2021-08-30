@@ -37,9 +37,6 @@ class TaskHandler implements Listener
                 $nbt = Entity::createBaseNBT($block);
                 $nbt->setInt("TileID", $block->getId());
                 $nbt->setByte("Data", $block->getDamage());
-                $entity = new FallingBlock($event->getEntity()->getLevel(), $nbt);
-                $entity->setMotion(new Vector3(0, 3, 0));
-                $entity->spawnToAll();
             }
         }
     }
