@@ -2,7 +2,7 @@
 
 namespace Vecnavium\LaunchableTNT;
 
-use Vecnavium\ThrowableTNT\LaunchableTNT;
+use Vecnavium\LaunchableTNT\LaunchableTNT;
 use pocketmine\block\Solid;
 use pocketmine\entity\Entity;
 use pocketmine\item\Item;
@@ -14,10 +14,18 @@ use pocketmine\Player;
 use pocketmine\entity\object\PrimedTNT;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\math\Vector3;
+use pocketmine\plugin\Plugin;
 
 class TaskHandler implements Listener
 
 {
+
+    private Main $plugin;
+
+    public function __construct(LaunchableTNT $plugin)
+    {
+
+    }
 
     public function onInteract(PlayerInteractEvent $event): void
     {
@@ -40,5 +48,6 @@ class TaskHandler implements Listener
             }
         }
     }
+
 }
 
