@@ -1,14 +1,14 @@
 <?php
 
-namespace Vecnavium\ThrowableTNT;
+namespace Vecnavium\LaunchableTNT;
 
 use pocketmine\entity\Entity;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
 use pocketmine\plugin\PluginBase;
-use Vecnavium\ThrowableTNT\Listener;
+use Vecnavium\LaunchableTNT\Listener;
 
-class ThrowableTNT extends PluginBase
+class LaunchableTNT extends PluginBase
 {
 
     public function onEnable(): void

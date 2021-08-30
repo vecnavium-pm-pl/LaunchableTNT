@@ -1,6 +1,6 @@
-name: ThrowableTNT
+name: LaunchableTNT
 api: 3.0.0
-main: Vecnavium\ThrowableTNT\ThrowableTNT
+main: Vecnavium\LaunchableTNT\LaunchableTNT
 version: 1.0.0
 author: Vecnavium
 description: A PocketMine-MP Plugin that allows you to throw TNT
