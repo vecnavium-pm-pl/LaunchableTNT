@@ -20,13 +20,6 @@ class TaskHandler implements Listener
 
 {
 
-    private Main $plugin;
-
-    public function __construct(LaunchableTNT $plugin)
-    {
-
-    }
-
     public function onInteract(PlayerInteractEvent $event): void
     {
         $player = $event->getPlayer();
