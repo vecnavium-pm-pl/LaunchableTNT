@@ -20,7 +20,7 @@ You found a bug or a plugin issue?
 
 - Contact support in the [Discord Server](https://discord.gg/jWFB56RqUN)
 
-- Create an [Issue](https://github.com/Vecnavium/ThrowableTNT/issues/new)
+- Create an [Issue](https://github.com/Vecnavium/LaunchableTNT/issues/new)
 
 - Write your bug & the issue you are having with all informations including the error so I can track the issue
 
