@@ -17,8 +17,14 @@ class LaunchableTNT extends PluginBase implements Listener{
 
     public function onEnable(): void{
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-
+        $this->checkUpdate();
     }
+
+    public function checkUpdate(bool $isRetry = false): void {
+
+        $this->getServer()->getAsyncPool()->submitTask(new CheckUpdateTask($this, $isRetry));
+    }
+
 
     public function onExplode(EntityExplodeEvent $event): void
     {
