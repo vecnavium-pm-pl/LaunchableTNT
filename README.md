@@ -3,13 +3,8 @@ A PocketMine-MP Plugin that enables throwing TNT
 
 # Planned features
 
-- [ ] Cooldown (Setting true or false and time limit)
-
-- [ ] Ability to disable or enable block animations (config)
-
-- [ ] Ability to disable or enable explosions (config)
-
-- [ ] Animated blocks(Falling blocks onExplode and configurable)
+LaunchableTNT on PocketMine API 3.0.0 is now on feature freeze and will only be doing plugin updates when it comes to bug fixes and protocol updates. 
+LaunchableTNT PocketMine API 4.0.0 is in development with some major changes, updates, new features and rewrites.
 
 
 Have other suggestions? Let me know in the [Support Discord](https://discord.gg/jWFB56RqUN) or Create an [Issue](https://github.com/Vecnavium/ThrowableTNT/issues/new) about your suggestion!
@@ -32,6 +27,7 @@ No Pocketmine-MP Spoons support! If you are using a modified Pocketmine-MP build
 
 # Suggestions
 
-Have a suggestion?
+We will not take any suggestions for LaunchableTNT API 3.0.0 for the reason below.
 
-Feel free to contact me in the [Support Discord Server](https://discord.gg/jWFB56RqUN) and suggest the suggestion you have in mind for this plugin!
+LaunchableTNT on PocketMine API 3.0.0 is now on feature freeze and will only be doing plugin updates when it comes to bug fixes and protocol updates. 
+LaunchableTNT PocketMine API 4.0.0 is in development with some major changes, updates, new features and rewrites.
