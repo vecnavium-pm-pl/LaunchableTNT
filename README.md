@@ -1,7 +1,15 @@
-# LaunchableTNT
-A PocketMine-MP Plugin that enables throwing TNT
+<p align="center">
+    <a href="https://github.com/Vecnavium/LaunchableTNT"><img src="https://github.com/Vecnavium/LaunchableTNT/blob/master/icon.png"></img></a><br>
+    <b>A PocketMine-MP Plugin that enabls throwing TNT</b>
+</p>
 
-Features
+<p align="center">
+    <img alt="GitHubrelease" src="https://img.shields.io/github/v/release/Vecnavium/LaunchableTNT?label=release&sort=semver">
+      <img alt="Stars" src= "https://img.shields.io/github/stars/Vecnavium/LaunchableTNT?style=for-the-badge">
+    <a href="https://discord.gg/6M9tGyWPjr"><img src="https://img.shields.io/discord/837701868649709568?label=discord&color=7289DA&logo=discord" alt="Discord" /></a>
+</p>
+
+# Features
 
 - Allows you to throw TNT.
 
