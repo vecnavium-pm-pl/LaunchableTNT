@@ -23,38 +23,35 @@ class CheckUpdateTask extends AsyncTask{
         $this->retry = $retry;
         $this->name = $plugin->getDescription()->getName();
         $this->version = $plugin->getDescription()->getVersion();
-        $this->storeLocal([$plugin]);
+        #$this->storeLocal([$plugin]);
     }
 
     public function onRun(): void {
-        $poggitData = Internet::getURL(self::POGGIT_URL . $this->name);
-
-        if (!$poggitData) {
-            return;
-        }
-
-        $poggit = json_decode($poggitData, true);
-
-        if (!is_array($poggit)) {
-            return;
-        }
-
-        $version = ""; $date = ""; $updateUrl = "";
-
-        foreach ($poggit as $pog) {
-            if (version_compare($this->version, str_replace("-beta", "", $pog["version"]), ">=")) {
-                continue;
+		$poggitData = Internet::getURL(self::POGGIT_URL . $this->name, 10, [], $err);
+        $version = $this->version;
+        $date = "";
+        $updateUrl = "";
+        if($poggitData !== null){
+            $poggit = json_decode($poggitData->getBody(), true);
+            foreach($poggit as $pog){
+                if(version_compare($version, $pog["version"], ">=")){
+                    continue;
+                }
+				$date = $pog["last_state_change_date"];
+                $version = $pog["version"];
+				$updateUrl = $pog["html_url"];
             }
-
-            $version = $pog["version"]; $date = $pog["last_state_change_date"]; $updateUrl = $pog["html_url"];
         }
 
         $this->setResult([$version, $date, $updateUrl]);
     }
 
-    public function onCompletion(Server $server): void {
+    public function onCompletion(): void {
         /** @var LaunchableTNT $plugin */
-        [$plugin] = $this->fetchLocal();
+        $plugin = Server::getInstance()->getPluginManager()->getPlugin($this->name);
+        if($plugin === null){
+            return;
+        }
 
         if ($this->getResult() === null) {
             $plugin->getLogger()->debug("Update Check has failed!");
