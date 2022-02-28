@@ -55,7 +55,7 @@ class CheckUpdateTask extends AsyncTask{
 
         if($highestVersion !== $this->pluginVersion){
             $artifactUrl = $artifactUrl . "/" . $this->pluginName . "_" . $highestVersion . ".phar";
-            $plugin->getLogger()->notice(vsprintf("Version %s has been released for API %s. Download the new release at %s", [$highestVersion, $api, $artifactUrl]));
+            $plugin->getLogger()->notice(vsprintf("LaunchableTNT %s has been released for API %s. Download the new update at %s", [$highestVersion, $api, $artifactUrl]));
         }
     }
 }
