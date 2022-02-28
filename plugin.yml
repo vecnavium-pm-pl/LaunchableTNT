@@ -1,6 +1,8 @@
 name: LaunchableTNT
-api: 3.0.0
+api: 4.0.0
 main: Vecnavium\LaunchableTNT\LaunchableTNT
-version: 1.0.1
-author: Vecnavium
+version: 1.0.2
+author: 
+  - Vecnavium
+  - YTBJero
 description: A PocketMine-MP Plugin that allows you to throw TNT

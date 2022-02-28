@@ -14,69 +14,48 @@ use function vsprintf;
 
 class CheckUpdateTask extends AsyncTask{
 
-    private const POGGIT_URL = "https://poggit.pmmp.io/releases.json?name=";
-    private string $version;
-    private string $name;
-    private bool $retry;
+    private const POGGIT_RELEASES_URL = "https://poggit.pmmp.io/releases.min.json?name=";
 
-    public function __construct(LaunchableTNT $plugin, bool $retry) {
-        $this->retry = $retry;
-        $this->name = $plugin->getDescription()->getName();
-        $this->version = $plugin->getDescription()->getVersion();
-        $this->storeLocal([$plugin]);
+    public function __construct(private string $pluginName, private string $pluginVersion){
     }
 
-    public function onRun(): void {
-        $poggitData = Internet::getURL(self::POGGIT_URL . $this->name);
-
-        if (!$poggitData) {
-            return;
-        }
-
-        $poggit = json_decode($poggitData, true);
-
-        if (!is_array($poggit)) {
-            return;
-        }
-
-        $version = ""; $date = ""; $updateUrl = "";
-
-        foreach ($poggit as $pog) {
-            if (version_compare($this->version, str_replace("-beta", "", $pog["version"]), ">=")) {
-                continue;
+    public function onRun() : void{
+        $json = Internet::getURL(self::POGGIT_RELEASES_URL . $this->pluginName, 10, [], $err);
+        $highestVersion = $this->pluginVersion;
+        $artifactUrl = "";
+        $api = "";
+        if($json !== null){
+            $releases = json_decode($json->getBody(), true);
+            foreach($releases as $release){
+                if(version_compare($highestVersion, $release["version"], ">=")){
+                    continue;
+                }
+                $highestVersion = $release["version"];
+                $artifactUrl = $release["artifact_url"];
+                $api = $release["api"][0]["from"] . " - " . $release["api"][0]["to"];
             }
-
-            $version = $pog["version"]; $date = $pog["last_state_change_date"]; $updateUrl = $pog["html_url"];
         }
 
-        $this->setResult([$version, $date, $updateUrl]);
+        $this->setResult([$highestVersion, $artifactUrl, $api, $err]);
     }
 
-    public function onCompletion(Server $server): void {
-        /** @var LaunchableTNT $plugin */
-        [$plugin] = $this->fetchLocal();
 
-        if ($this->getResult() === null) {
-            $plugin->getLogger()->debug("Update Check has failed!");
+    public function onCompletion() : void{
+        $plugin = Server::getInstance()->getPluginManager()->getPlugin($this->pluginName);
+        if($plugin === null){
+            return;
+        }
 
-            if (!$this->retry) {
-                $plugin->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use ($plugin): void {
-                    $plugin->checkUpdate(true);
-                }), 30);
-            }
+        [$highestVersion, $artifactUrl, $api, $err] = $this->getResult();
+        if($err !== null){
+            $plugin->getLogger()->error("Update notify error: $err");
 
             return;
         }
 
-        [$latestVersion, $updateDateUnix, $updateUrl] = $this->getResult();
-
-        if ($latestVersion != "" || $updateDateUnix != null || $updateUrl !== "") {
-            $updateDate = date("j F Y", (int)$updateDateUnix);
-
-            if ($this->version !== $latestVersion) {
-                $plugin->getLogger()->notice("LaunchableTNT v$latestVersion has been released on $updateDate. Download the new update at $updateUrl");
-                $plugin->cachedUpdate = [$latestVersion, $updateDate, $updateUrl];
-            }
+        if($highestVersion !== $this->pluginVersion){
+            $artifactUrl = $artifactUrl . "/" . $this->pluginName . "_" . $highestVersion . ".phar";
+            $plugin->getLogger()->notice(vsprintf("Version %s has been released for API %s. Download the new release at %s", [$highestVersion, $api, $artifactUrl]));
         }
     }
 }
