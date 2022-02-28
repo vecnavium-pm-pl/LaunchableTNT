@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://github.com/Vecnavium/LaunchableTNT"><img src="https://github.com/Vecnavium/LaunchableTNT/blob/master/icon.png"></img></a><br>
+    <a href="https://github.com/Vecnavium/LaunchableTNT"><img src="https://github.com/Vecnavium/LaunchableTNT/blob/stable/icon.png"></img></a><br>
     <b>A PocketMine-MP Plugin that enabls throwing TNT</b>
 </p>
 
