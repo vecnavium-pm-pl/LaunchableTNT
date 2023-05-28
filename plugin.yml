@@ -1,5 +1,5 @@
 name: LaunchableTNT
-api: 4.0.0
+api: 5.0.0
 main: Vecnavium\LaunchableTNT\LaunchableTNT
 version: 1.0.2
 author: Vecnavium
