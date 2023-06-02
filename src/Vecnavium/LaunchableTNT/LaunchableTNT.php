@@ -27,7 +27,7 @@ class LaunchableTNT extends PluginBase implements Listener{
         $item = $player->getInventory()->getItemInHand();
         if ($item->getBlock() instanceof TNT) {
             if ($player->isSurvival()) {
-                $item->setCount($item->getCount() - 1);
+                $item->pop();
                 $player->getInventory()->setItemInHand($item);
             }
             $entity = new PrimedTNT(Location::fromObject($player->getPosition()->asVector3(), $player->getWorld()));
